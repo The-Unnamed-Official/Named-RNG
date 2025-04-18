@@ -359,8 +359,8 @@
             { name: "SOVEREIGN", odds: 2000000000, rank: "Forsaken" }
         ];
 
-        // Threshold for special cutscenes
-        const cutsceneThreshold = 10000000000000000;
+        // // Threshold for special cutscenes
+        // const cutsceneThreshold = 10000000000000000;
 
         // Player state
         let collected = {};
@@ -1017,67 +1017,67 @@
             return auras.findIndex(a => a.name === name);
         }
 
-        function showCutscene(idx) {
-            const aura = auras[idx];
-            const cutscene = document.getElementById('cutscene');
-            disabled();
+        // function showCutscene(idx) {
+        //     const aura = auras[idx];
+        //     const cutscene = document.getElementById('cutscene');
+        //     disabled();
             
-            // Set up the cutscene container
-            cutscene.style.display = 'flex';
-            cutscene.style.backgroundColor = 'black';
-            cutscene.innerHTML = '<div id="star"></div>';
+        //     // Set up the cutscene container
+        //     cutscene.style.display = 'flex';
+        //     cutscene.style.backgroundColor = 'black';
+        //     cutscene.innerHTML = '<div id="star"></div>';
             
-            const star = document.getElementById('star');
-            star.style.position = 'absolute';
-            star.style.left = '50%';
-            star.style.top = '50%';
-            star.style.transform = 'translate(-50%, -50%)';
-            star.style.backgroundColor = 'white';
-            star.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
-            star.style.width = '0px';
-            star.style.height = '0px';
-            star.style.transition = 'width 4s, height 4s';
-            cutscene.style.zIndex = '1000';
-            star.style.zIndex = '1000';
+        //     const star = document.getElementById('star');
+        //     star.style.position = 'absolute';
+        //     star.style.left = '50%';
+        //     star.style.top = '50%';
+        //     star.style.transform = 'translate(-50%, -50%)';
+        //     star.style.backgroundColor = 'white';
+        //     star.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+        //     star.style.width = '0px';
+        //     star.style.height = '0px';
+        //     star.style.transition = 'width 4s, height 4s';
+        //     cutscene.style.zIndex = '1000';
+        //     star.style.zIndex = '1000';
             
-            // Start the animation sequence
-            setTimeout(() => {
-                // Grow the star over 4 seconds
-                star.style.width = '400px';
-                star.style.height = '400px';
+        //     // Start the animation sequence
+        //     setTimeout(() => {
+        //         // Grow the star over 4 seconds
+        //         star.style.width = '400px';
+        //         star.style.height = '400px';
                 
-                // After 4 seconds, start the white transition
-                setTimeout(() => {
-                    // First make corners and sides white
-                    cutscene.style.transition = 'background-color 0.5s';
+        //         // After 4 seconds, start the white transition
+        //         setTimeout(() => {
+        //             // First make corners and sides white
+        //             cutscene.style.transition = 'background-color 0.5s';
                     
-                    // Then make everything white
-                    setTimeout(() => {
-                        cutscene.style.backgroundColor = 'white';
-                        cutscene.style.background = 'white';
+        //             // Then make everything white
+        //             setTimeout(() => {
+        //                 cutscene.style.backgroundColor = 'white';
+        //                 cutscene.style.background = 'white';
                         
-                        // Display the aura text information
-                        setTimeout(() => {
-                            cutscene.style.transition = 'none';
-                            cutscene.style.backgroundColor = 'rgba(0,0,0,0.8)';
-                            cutscene.style.background = 'none';
-                            cutscene.style.zIndex = '-1';
-                            star.style.backgroundColor = 'none';
-                            star.style.width = '0px';
-                            star.style.height = '0px';
-                            star.style.clipPath = 'none';
-                            star.style.transform = 'translate(-50%, -50%) scale(0)';
-                            star.style.zIndex = '-1';
-                            rollBTN.disabled = false;
-                        }, 1000);
-                    }, 500);
-                }, 4000);
-            }, 10);
-        }
+        //                 // Display the aura text information
+        //                 setTimeout(() => {
+        //                     cutscene.style.transition = 'none';
+        //                     cutscene.style.backgroundColor = 'rgba(0,0,0,0.8)';
+        //                     cutscene.style.background = 'none';
+        //                     cutscene.style.zIndex = '-1';
+        //                     star.style.backgroundColor = 'none';
+        //                     star.style.width = '0px';
+        //                     star.style.height = '0px';
+        //                     star.style.clipPath = 'none';
+        //                     star.style.transform = 'translate(-50%, -50%) scale(0)';
+        //                     star.style.zIndex = '-1';
+        //                     rollBTN.disabled = false;
+        //                 }, 1000);
+        //             }, 500);
+        //         }, 4000);
+        //     }, 10);
+        // }
 
-        function closeCutscene() {
-            document.getElementById('cutscene').style.display = 'none';
-        }
+        // function closeCutscene() {
+        //     document.getElementById('cutscene').style.display = 'none';
+        // }
 
         // Initial setup
         loadState();
