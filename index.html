@@ -22,14 +22,23 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .close-cutscene { margin-top: 30px; font-size: 1em; background: #ffd700; color: #23283a; user-select: none; }
         .stats { margin-bottom: 20px; user-select: none; }
+
         .craftName-Stardust { color: #eedaff; font-size: 1.2em; font-weight: bold; }
-        .craftName-CelestialSpell { color: #fcffc0; font-size: 1.2em; font-weight: bold; }
-        .craftName-JazzSheet { color: #ffcea4; font-size: 1.2em; font-weight: bold; }
-        .craftName-ExoticDust { color: #7bb9ff; font-size: 1.2em; font-weight: bold; }
-        .craftName-StellarGift { color: #e75fff; font-size: 1.2em; font-weight: bold; }
-        .craftName-OnyxCurse { color: #ff006a; font-size: 1.2em; font-weight: bold; }
-        .craftName-HastyGloves { color: #48dee6; font-size: 1.2em; font-weight: bold; }
-        .craftName-DeviceHaste { color: #7bffde; font-size: 1.2em; font-weight: bold; }
+        .craftName-CelestialSpell { color: #fcffc0; font-size: 1.3em; font-weight: bold; }
+        .craftName-JazzSheet { color: #ffcea4; font-size: 1.4em; font-weight: bold; }
+        .craftName-ExoticDust { color: #7bb9ff; font-size: 1.5em; font-weight: bold; }
+        .craftName-StellarGift { color: #e75fff; font-size: 1.6em; font-weight: bold; }
+        .craftName-OnyxCurse { color: #ff006a; font-size: 1.7em; font-weight: bold; }
+        .craftName-LastMemory { color: #8d00b8; font-size: 1.8em; font-weight: bold; }
+
+        .craftName-HastyPotion { color: #48dee6; font-size: 1.2em; font-weight: bold; }
+        .craftName-HastyGloves { color: #96ffe5; font-size: 1.3em; font-weight: bold; }
+        .craftName-DeviceHaste { color: #a4ffff; font-size: 1.4em; font-weight: bold; }
+
+        .craftName-LuckyPotion { color: #4fe24f; font-size: 1.2em; font-weight: bold; }
+        .craftName-FortunePotion { color: #3ff292; font-size: 1.3em; font-weight: bold; }
+        .craftName-GodlikePotion { color: #00ffbf; font-size: 1.4em; font-weight: bold; }
+
         .btn-normal { background-color: #2e354a; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
         .btn-disabled { background-color: #4a2e2e; color: #666666; padding: 10px 20px; border: none; border-radius: 4px; cursor: not-allowed; }
         .btn-disabled:active { background-color: #462424; }
@@ -182,49 +191,57 @@
                 <span class="craft-recipe">Cost: 1000 Common, 750 Uncommon, 500 Rare, 333 Epic, 250 Legendary, 75 Wind, 50 Heat, 25 Wave</span>
             <h2>Craft Speed Effects</h2>
             <div>
-                <button id="craftFastRollBtn" onclick="craftFastRoll()">Craft <p class="craftName-HastyGloves">Hasty Gloves</p> 50% less roll-cooldown (10 min)</button>
-                <span class="craft-recipe">Cost: 50 Wind, 30 Heat, 10 Wave</span>
+                <button id="craftFastRollBtn" onclick="craftFastRoll10()">Craft <p class="craftName-HastyPotion">Haste Potion</p> <a id="rollCooldownDisplay">10% less roll-cooldown</a> (10 min)</button>
+                <span class="craft-recipe">Cost: 10 Wind, 5 Heat, 1 Wave</span>
             </div>
             <div>
-                <button id="craftFastRollBtn" onclick="craftFastRoll2()">Craft <p class="craftName-DeviceHaste">The Device of Haste</p> 90% less roll-cooldown (10 min)</button>
-                <span class="craft-recipe">Cost: 100 Wind, 75 Heat, 50 Wave</span>
+                <button id="craftFastRollBtn" onclick="craftFastRoll50()">Craft <p class="craftName-HastyGloves">Hasty Gloves</p> <a id="rollCooldownDisplay">50% less roll-cooldown</a> (5 min)</button>
+                <span class="craft-recipe">Cost: 25 Wind, 15 Heat, 5 Wave</span>
+            </div>
+            <div>
+                <button id="craftFastRollBtn" onclick="craftFastRoll90()">Craft <p class="craftName-DeviceHaste">The Device of Haste</p> <a id="rollCooldownDisplay">90% less roll-cooldown</a> (2 min)</button>
+                <span class="craft-recipe">Cost: 50 Wind, 30 Heat, 10 Wave</span>
             </div>
             <h2>Craft Luck Effects</h2>
             <div>
-                <button onclick="craftLuck('2x')">Craft 2x Luck (1 min)</button>
+                <button onclick="craftLuck('2x')">Craft <p class="craftName-LuckyPotion">Lucky Potion</p> <a id="luckMultiplier">2x Luck</a> (5 min)</button>
                 <span class="craft-recipe">Cost: 10 Common, 5 Rare, 2 Epic</span>
             </div>
             <div>
-                <button onclick="craftLuck('10x')">Craft 10x Luck (1 min)</button>
+                <button onclick="craftLuck('10x')">Craft <p class="craftName-FortunePotion">Fortune Potion</p> <a id="luckMultiplier">10x Luck</a> (2 min)</button>
                 <span class="craft-recipe">Cost: 30 Uncommon, 15 Rare, 5 Epic, 1 Legendary</span>
             </div>
             <div>
-                <button onclick="craftLuck('100x')">Craft 100x Luck (1 min)</button>
+                <button onclick="craftLuck('100x')">Craft <p class="craftName-GodlikePotion">Godlike Potion</p> <a id="luckMultiplier">100x Luck</a> (1 min)</button>
                 <span class="craft-recipe">Cost: 100 Epic, 10 Legendary, 1 Mythic</span>
             </div>
             <div>
-                <button onclick="craftOneRollLuck10k()">Craft <p class="craftName-Stardust">Stardust</p> 10,000x Luck (next roll only)</button>
+                <button onclick="craftOneRollLuck10k()">Craft <p class="craftName-Stardust">Stardust</p> <a id="luckMultiplier">10,000x Luck</a> (next roll only)</button>
                 <span class="craft-recipe">Cost: 50 Uncommon, 25 Rare, 10 Epic</span>
             </div>
             <div>
-                <button onclick="craftOneRollLuck100k()">Craft <p class="craftName-CelestialSpell">The Celestial Spell</p> 100,000x Luck (next roll only)</button>
+                <button onclick="craftOneRollLuck100k()">Craft <p class="craftName-CelestialSpell">The Celestial Spell</p> <a id="luckMultiplier">100,000x Luck</a> (next roll only)</button>
                 <span class="craft-recipe">Cost: 30 Rare, 20 Epic, 15 Legendary, 1 Celestial</span>
             </div>
             <div>
-                <button onclick="craftOneRollLuck250k()">Craft <p class="craftName-JazzSheet">The Jazz Sheet</p> 250,000x Luck (next roll only)</button>
+                <button onclick="craftOneRollLuck250k()">Craft <p class="craftName-JazzSheet">The Jazz Sheet</p> <a id="luckMultiplier">250,000x Luck</a> (next roll only)</button>
                 <span class="craft-recipe">Cost: 30 Epic, 30 Legendary, 15 Mythic, 1 Jazz</span>
             </div>
             <div>
-                <button onclick="craftOneRollLuck500k()">Craft <p class="craftName-ExoticDust">Exotic Dust</p> 500,000x Luck (next roll only)</button>
+                <button onclick="craftOneRollLuck500k()">Craft <p class="craftName-ExoticDust">Exotic Dust</p> <a id="luckMultiplier">500,000x Luck</a> (next roll only)</button>
                 <span class="craft-recipe">Cost: 60 Epic, 55 Legendary, 30 Mythic, 1 Exotic</span>
             </div>
             <div>
-                <button onclick="craftOneRollLuck1m()">Craft <p class="craftName-StellarGift">Stellar's Gift</p> 1,000,000x Luck (next roll only)</button>
+                <button onclick="craftOneRollLuck1m()">Craft <p class="craftName-StellarGift">Stellar's Gift</p> <a id="luckMultiplier">1,000,000x Luck</a> (next roll only)</button>
                 <span class="craft-recipe">Cost: 110 Legendary, 50 Mythic, 33 Stellar, 1 Void</span>
             </div>
             <div>
-                <button onclick="craftOneRollLuck10m()">Craft <p class="craftName-OnyxCurse">The Onyx Curse</p> 10,000,000x Luck (next roll only)</button>
+                <button onclick="craftOneRollLuck10m()">Craft <p class="craftName-OnyxCurse">The Onyx Curse</p> <a id="luckMultiplier">10,000,000x Luck</a> (next roll only)</button>
                 <span class="craft-recipe">Cost: 600 Mythic, 333 Stellar, 240 Onyx, 1 Nihility</span>
+            </div>
+            <div>
+                <button onclick="craftOneRollLuck200m()">Craft <p class="craftName-LastMemory">The Last Memory</p> <a id="luckMultiplier">200,000,000x Luck</a> (next roll only)</button>
+                <span class="craft-recipe">Cost: 50 Soul, 10 Celestial, 5 Eternal, 3 Exotic, 2 Astral, 1 Singularity, 1 Memory</span>
             </div>
         </div>
     </div>
@@ -280,11 +297,36 @@
             { name: "Platinum", odds: 800, rank: "Natural" },
             { name: "Bounded", odds: 900, rank: "Natural" },
             { name: "Soul", odds: 1000, rank: "Unique" },
+            { name: "Gilded", odds: 2000, rank: "Unique" },
+            { name: "Starlight", odds: 2500, rank: "Unique" },
+            { name: "Frost", odds: 3000, rank: "Unique" },
+            { name: "Fallen", odds: 4000, rank: "Unique" },
+            { name: "Dusk", odds: 5000, rank: "Unique" },
+            { name: "Eclipse", odds: 6000, rank: "Unique" },
+            { name: "Hollow", odds: 7000, rank: "Unique" },
+            { name: "Twilight", odds: 8000, rank: "Unique" },
+            { name: "Spectre", odds: 9000, rank: "Unique" },
+            { name: "Voidwalker", odds: 10000, rank: "Unique" },
             { name: "Celestial", odds: 10000, rank: "Unique" },
-            { name: "Void", odds: 50000, rank: "Unique" },
+            { name: "Starlit", odds: 15000, rank: "Unique" },
+            { name: "Astral Flare", odds: 20000, rank: "Unique" },
+            { name: "Celestial Flare", odds: 25000, rank: "Unique" },
+            { name: "◇ Void ◇", odds: 50000, rank: "Unique" },
+            { name: "Stormal", odds: 55103, rank: "Unique" },
+            { name: "Flame", odds: 60000, rank: "Unique" },
+            { name: "Cyber", odds: 70000, rank: "Unique" },
+            { name: "Rain Fall", odds: 80000, rank: "Unique" },
+            { name: "Mythical", odds: 90000, rank: "Unique" }, 
             { name: "Eternal", odds: 100000, rank: "Exalted" },
+            { name: "Count", odds: 123456, rank: "Exalted" },
             { name: "Exotic", odds: 250000, rank: "Exalted" },
+            { name: "Elysium", odds: 300000, rank: "Exalted" },
+            { name: "Frosted", odds: 400000, rank: "Exalted" },
             { name: "Poseidon", odds: 500000, rank: "Exalted" },
+            { name: "Solar", odds: 600000, rank: "Exalted" },
+            { name: "Lunar", odds: 700000, rank: "Exalted" },
+            { name: "Steampunk", odds: 800000, rank: "Exalted" },
+            { name: "{♢ Overdrive ♢}", odds: 900000, rank: "Exalted" },
             { name: "Astral", odds: 1000000, rank: "Glorious" },
             { name: "Arcane", odds: 2000000, rank: "Glorious" },
             { name: "Galaxy", odds: 5000000, rank: "Glorious" },
@@ -301,24 +343,24 @@
             { name: "Overture", odds: 150000000, rank: "Challenged" },
             { name: "Symphony", odds: 175000000, rank: "Challenged" },
             { name: "Impeached", odds: 200000000, rank: "Challenged" },
-            { name: "Oppression", odds: 220000000, rank: "Challenged" },
+            { name: "[ OPPRESSION ]", odds: 220000000, rank: "Challenged" },
             { name: "Archangel", odds: 250000000, rank: "Challenged" },
             { name: "Bloodlust", odds: 300000000, rank: "Challenged" },
             { name: "AbyssalHunter", odds: 400000000, rank: "Challenged" },
             { name: "Gargantua", odds: 430000000, rank: "Challenged" },
-            { name: "Ruins", odds: 500000000, rank: "Challenged" },
-            { name: "Broken Reality", odds: 601020102, rank: "Challenged" },
+            { name: "《 Ruins 》", odds: 500000000, rank: "Challenged" },
+            { name: "Broken ▫ Reality", odds: 601020102, rank: "Challenged" },
             { name: "Leviathan", odds: 700000000, rank: "Challenged" },
-            { name: "Aegis", odds: 825000000, rank: "Challenged" },
-            { name: "Oblivion", odds: 999999999, rank: "Forsaken" },
-            { name: "Pixelation", odds: 1073741824, rank: "Forsaken" },
-            { name: "Luminocity", odds: 1200000000, rank: "Forsaken" },
-            { name: "Monarch", odds: 1500000000, rank: "Forsaken" },
-            { name: "Sovereign", odds: 2000000000, rank: "Forsaken" }
+            { name: "﴾ Aegis ﴿", odds: 825000000, rank: "Challenged" },
+            { name: "OBLIVION", odds: 999999999, rank: "Forsaken" },
+            { name: "▣ PIXELATION ▣", odds: 1073741824, rank: "Forsaken" },
+            { name: "[ Luminosity ]", odds: 1200000000, rank: "Forsaken" },
+            { name: "MONARCH", odds: 1500000000, rank: "Forsaken" },
+            { name: "SOVEREIGN", odds: 2000000000, rank: "Forsaken" }
         ];
 
         // Threshold for special cutscenes
-        const cutsceneThreshold = 10000;
+        const cutsceneThreshold = 5000;
 
         // Player state
         let collected = {};
@@ -333,6 +375,7 @@
         let oneRollLuckCount500k = 0;
         let oneRollLuckCount1m = 0;
         let oneRollLuckCount10m = 0;
+        let oneRollLuckCount200m = 0;
         let fastRollActive = false;
         let fastRollTimer = 0; // seconds remaining for fast roll
         let fastRollInterval = null;
@@ -355,7 +398,8 @@
                 oneRollLuckCount250k,
                 oneRollLuckCount500k,
                 oneRollLuckCount1m,
-                oneRollLuckCount10m
+                oneRollLuckCount10m,
+                oneRollLuckCount200m
             };
             localStorage.setItem('auraCollectorState', JSON.stringify(state));
         }
@@ -373,6 +417,7 @@
             oneRollLuckCount500k = st.oneRollLuckCount500k || 0;
             oneRollLuckCount1m = st.oneRollLuckCount1m || 0;
             oneRollLuckCount10m = st.oneRollLuckCount10m || 0;
+            oneRollLuckCount200m = st.oneRollLuckCount200m || 0;
     
             if (st.luckEndTimestamp) {
                 const rem = Math.ceil((st.luckEndTimestamp - Date.now())/1000);
@@ -441,6 +486,19 @@
             }, fastRollActive ? 100 : 1000);
         }
 
+        // Function to toggle disabled state with visual feedback when in a cutscene
+        function disableButtonCutscene() {
+            rollBTN.disabled = true;
+            rollBTN.classList.remove('btn-normal');
+            rollBTN.classList.add('btn-disabled');
+            
+            setTimeout(() => { 
+                rollBTN.disabled = false; 
+                rollBTN.classList.remove('btn-disabled');
+                rollBTN.classList.add('btn-normal');
+            }, 6000);
+        }
+
         function updateFastRollStatus() {
             // Update the rollCooldownDisplay
             const cooldownDisplay = document.getElementById('rollCooldownDisplay');
@@ -485,7 +543,8 @@
             // decide which one‑roll is active, highest first
             let activeOneRoll = null;
             let multiplier = luckMultiplier;
-            if (oneRollLuckCount10m>0){ activeOneRoll='10m';  multiplier=10000000; }
+            if (oneRollLuckCount200m>0){ activeOneRoll='200m';  multiplier=200000000; }
+            else if (oneRollLuckCount10m>0){ activeOneRoll='10m';  multiplier=10000000; }
             else if (oneRollLuckCount1m>0){ activeOneRoll='1m';  multiplier=1000000; }
             else if (oneRollLuckCount500k>0){ activeOneRoll='500k';multiplier=500000;  }
             else if (oneRollLuckCount250k>0){ activeOneRoll='250k';multiplier=250000;  }
@@ -517,7 +576,8 @@
             collected[chosen]++; totalRolls++;
 
             // consume one‑roll
-            if (activeOneRoll==='10m')   oneRollLuckCount10m--;
+            if (activeOneRoll==='200m')   oneRollLuckCount200m--;
+            else if (activeOneRoll==='10m')   oneRollLuckCount10m--;
             else if (activeOneRoll==='1m')   oneRollLuckCount1m--;
             else if (activeOneRoll==='500k') oneRollLuckCount500k--;
             else if (activeOneRoll==='250k') oneRollLuckCount250k--;
@@ -527,7 +587,7 @@
             updateAurasList();
             updateStats();
             showLastRoll(chosen);
-            if (auras[chosen].odds>cutsceneThreshold && collected[chosen]===1) showCutscene(chosen);
+            if (auras[chosen].odds >= cutsceneThreshold && collected[chosen] === 1) showCutscene(chosen);
             saveState();
         }
 
@@ -558,7 +618,10 @@
             let mult = luckMultiplier;
             let rollsLeftText = '';
 
-            if (oneRollLuckCount10m > 0) {
+            if (oneRollLuckCount200m > 0) {
+                mult = 200000000;
+                rollsLeftText = `(next ${oneRollLuckCount200m} roll${oneRollLuckCount200m === 1 ? '' : 's'})`;
+            } else if (oneRollLuckCount10m > 0) {
                 mult = 10000000;
                 rollsLeftText = `(next ${oneRollLuckCount10m} roll${oneRollLuckCount10m === 1 ? '' : 's'})`;
             } else if (oneRollLuckCount1m > 0) {
@@ -667,15 +730,41 @@
             }
         }
 
-        function craftFastRoll() {
+        function craftFastRoll10() {
             // Adjust these requirements to your preference
-            if (collected[getAuraIndex("Wind")] >= 50 &&
-                collected[getAuraIndex("Heat")] >= 30 &&
-                collected[getAuraIndex("Wave")] >= 10) {
+            if (collected[getAuraIndex("Wind")] >= 10 &&
+                collected[getAuraIndex("Heat")] >= 5 &&
+                collected[getAuraIndex("Wave")] >= 1) {
                 
-                collected[getAuraIndex("Wind")] -= 50;
-                collected[getAuraIndex("Heat")] -= 30;
-                collected[getAuraIndex("Wave")] -= 10;
+                collected[getAuraIndex("Wind")] -= 10;
+                collected[getAuraIndex("Heat")] -= 5;
+                collected[getAuraIndex("Wave")] -= 1;
+                
+                // Activate fast roll for 10 minutes (600 seconds)
+                fastRollActive = true;
+                fastRollTimer = 600;
+                startFastRollCountdown();
+                updateFastRollStatus();
+                
+                // Show activation message
+                initFastRollDisplay();
+            } else {
+                notEnoughAuras();
+            }
+            updateAurasList(); 
+            updateStats(); 
+            saveState();
+        }
+
+        function craftFastRoll50() {
+            // Adjust these requirements to your preference
+            if (collected[getAuraIndex("Wind")] >= 25 &&
+                collected[getAuraIndex("Heat")] >= 15 &&
+                collected[getAuraIndex("Wave")] >= 5) {
+                
+                collected[getAuraIndex("Wind")] -= 25;
+                collected[getAuraIndex("Heat")] -= 15;
+                collected[getAuraIndex("Wave")] -= 5;
                 
                 // Activate fast roll for 10 minutes (600 seconds)
                 fastRollActive = true;
@@ -693,19 +782,19 @@
             saveState();
         }
 
-        function craftFastRoll2() {
+        function craftFastRoll90() {
             // Adjust these requirements to your preference
-            if (collected[getAuraIndex("Wind")] >= 100 &&
-                collected[getAuraIndex("Heat")] >= 75 &&
-                collected[getAuraIndex("Wave")] >= 50) {
+            if (collected[getAuraIndex("Wind")] >= 50 &&
+                collected[getAuraIndex("Heat")] >= 30 &&
+                collected[getAuraIndex("Wave")] >= 10) {
                 
-                collected[getAuraIndex("Wind")] -= 100;
-                collected[getAuraIndex("Heat")] -= 75;
-                collected[getAuraIndex("Wave")] -= 50;
+                collected[getAuraIndex("Wind")] -= 50;
+                collected[getAuraIndex("Heat")] -= 30;
+                collected[getAuraIndex("Wave")] -= 10;
                 
                 // Activate fast roll for 10 minutes (600 seconds)
                 fastRollActive = true;
-                fastRollTimer = 600;
+                fastRollTimer = 120;
                 startFastRollCountdown();
                 updateFastRollStatus();
                 
@@ -731,7 +820,7 @@
                 fastRollStatusDiv.className = 'fast-roll-status';
                 fastRollStatusDiv.innerHTML = `
                     <b>Roll Cooldown:</b> 
-                    <span id="rollCooldownDisplay">${fastRollActive ? '100 ms' : '1 second'}</span>
+                    <span id="rollCooldownDisplay">${fastRollActive ? '100 ms' : 'No current haste effect'}</span>
                     <span id="fastRollTimerDisplay">${
                         fastRollActive && fastRollTimer > 0 ? 
                         ` (${Math.floor(fastRollTimer / 60)}:${
@@ -757,7 +846,7 @@
                     collected[getAuraIndex("Common")] -= 10;
                     collected[getAuraIndex("Rare")] -= 5;
                     collected[getAuraIndex("Epic")] -= 2;
-                    addLuck(2, 60);
+                    addLuck(2, 300);
                 } else notEnoughAuras();
             } else if (type === '10x') {
                 if (collected[getAuraIndex("Uncommon")] >= 30 &&
@@ -768,7 +857,7 @@
                     collected[getAuraIndex("Rare")] -= 15;
                     collected[getAuraIndex("Epic")] -= 5;
                     collected[getAuraIndex("Legendary")] -= 1;
-                    addLuck(10, 60);
+                    addLuck(10, 120);
                 } else notEnoughAuras();
             } else if (type === '100x') {
                 if (collected[getAuraIndex("Epic")] >= 100 &&
@@ -829,11 +918,7 @@
         }
 
         function craftOneRollLuck1m() {
-            if (collected[getAuraIndex("Legendary")]>=110 && collected[getAuraIndex("Mythic")]>=50 && collected[getAuraIndex("Stellar")]>=33 && collected[getAuraIndex("Exotic")]>=2) {
-                collected[getAuraIndex("Legendary")]-=110;
-                collected[getAuraIndex("Mythic")]-=50;
-                collected[getAuraIndex("Stellar")]-=33;
-                collected[getAuraIndex("Exotic")]-=2;
+            if (collected[getAuraIndex("Legendary")]>=1) {
                 oneRollLuckCount1m++;
             } else notEnoughAuras();
             updateAurasList(); updateStats(); saveState();
@@ -846,6 +931,20 @@
                 collected[getAuraIndex("Onyx")]-=240;
                 collected[getAuraIndex("Nihility")]-=1;
                 oneRollLuckCount10m++;
+            } else notEnoughAuras();
+            updateAurasList(); updateStats(); saveState();
+        }
+
+        function craftOneRollLuck200m() {
+            if (collected[getAuraIndex("Soul")]>=50 && collected[getAuraIndex("Celestial")]>=10 && collected[getAuraIndex("Eternal")]>=5 && collected[getAuraIndex("Exotic")]>=3 && collected[getAuraIndex("Astral")]>=2 && collected[getAuraIndex("Singularity")]>=1 && collected[getAuraIndex("Memory")]>=1) {
+                collected[getAuraIndex("Soul")]-=50;
+                collected[getAuraIndex("Celestial")]-=10;
+                collected[getAuraIndex("Eternal")]-=5;
+                collected[getAuraIndex("Exotic")]-=3;
+                collected[getAuraIndex("Astral")]-=2;
+                collected[getAuraIndex("Singularity")]-=1;
+                collected[getAuraIndex("Memory")]-=1;
+                oneRollLuckCount200m++;
             } else notEnoughAuras();
             updateAurasList(); updateStats(); saveState();
         }
@@ -897,6 +996,7 @@
             if (oneRollLuckCount500k > 0) oneRollLuckCount500k = 0;
             if (oneRollLuckCount1m > 0) oneRollLuckCount1m = 0;
             if (oneRollLuckCount10m > 0) oneRollLuckCount10m = 0;
+            if (oneRollLuckCount200m > 0) oneRollLuckCount200m = 0;
             if (luckMultiplier < mult) {
                 luckMultiplier = mult;
                 luckTimer = seconds;
@@ -913,19 +1013,64 @@
             return auras.findIndex(a => a.name === name);
         }
 
-        // Cutscene display
         function showCutscene(idx) {
             const aura = auras[idx];
-            document.getElementById('cutsceneText').innerHTML = `
-                <div>
-                    <span style="color:#ff4bff;font-size:1.3em;">RARE FIND!</span><br>
-                    <b>${aura.name}</b><br>
-                    <span style="font-size:0.7em;">[1 in ${aura.odds.toLocaleString()}]</span><br><br>
-                    <span style="font-size:0.8em;">You have obtained a legendary aura!<br>Congratulations!</span>
-                </div>
-            `;
-            document.getElementById('cutscene').style.display = 'flex';
+            const cutscene = document.getElementById('cutscene');
+            disabled();
+            
+            // Set up the cutscene container
+            cutscene.style.display = 'flex';
+            cutscene.style.backgroundColor = 'black';
+            cutscene.innerHTML = '<div id="star"></div>';
+            
+            const star = document.getElementById('star');
+            star.style.position = 'absolute';
+            star.style.left = '50%';
+            star.style.top = '50%';
+            star.style.transform = 'translate(-50%, -50%)';
+            star.style.backgroundColor = 'white';
+            star.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+            star.style.width = '0px';
+            star.style.height = '0px';
+            star.style.transition = 'width 4s, height 4s';
+            cutscene.style.zIndex = '1000';
+            star.style.zIndex = '1000';
+            
+            // Start the animation sequence
+            setTimeout(() => {
+                // Grow the star over 4 seconds
+                star.style.width = '400px';
+                star.style.height = '400px';
+                
+                // After 4 seconds, start the white transition
+                setTimeout(() => {
+                    // First make corners and sides white
+                    cutscene.style.transition = 'background-color 0.5s';
+                    
+                    // Then make everything white
+                    setTimeout(() => {
+                        cutscene.style.backgroundColor = 'white';
+                        cutscene.style.background = 'white';
+                        
+                        // Display the aura text information
+                        setTimeout(() => {
+                            cutscene.style.transition = 'none';
+                            cutscene.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                            cutscene.style.background = 'none';
+                            cutscene.style.zIndex = '-1';
+                            star.style.backgroundColor = 'none';
+                            star.style.width = '0px';
+                            star.style.height = '0px';
+                            star.style.clipPath = 'none';
+                            star.style.transform = 'translate(-50%, -50%) scale(0)';
+                            star.style.zIndex = '-1';
+                            rollBTN.disabled = false;
+                        }, 1000);
+                    }, 500);
+                }, 4000);
+            }, 10);
         }
+
         function closeCutscene() {
             document.getElementById('cutscene').style.display = 'none';
         }
