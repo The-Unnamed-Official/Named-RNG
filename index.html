@@ -918,7 +918,11 @@
         }
 
         function craftOneRollLuck1m() {
-            if (collected[getAuraIndex("Legendary")]>=1) {
+            if (collected[getAuraIndex("Legendary")]>=110 && collected[getAuraIndex("Mythic")]>=50 && collected[getAuraIndex("Stellar")]>=33 && collected[getAuraIndex("Exotic")]>=2) {
+                collected[getAuraIndex("Legendary")]-=110;
+                collected[getAuraIndex("Mythic")]-=50;
+                collected[getAuraIndex("Stellar")]-=33;
+                collected[getAuraIndex("Exotic")]-=2;
                 oneRollLuckCount1m++;
             } else notEnoughAuras();
             updateAurasList(); updateStats(); saveState();
